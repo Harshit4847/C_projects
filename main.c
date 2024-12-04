@@ -1,41 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int main()
 {
-  int a,b,r;
-  char op;
+    int rno, n, att = 0;
 
-      printf("Enter the first no:");
-      scanf("%d", &a);
 
-      printf("Enter the srcond no:");
-      scanf("%d", &b);
+    srand(time(0));
+    rno = rand() % 100 + 1;
 
-      printf("Ok what task do you wanaa  perform\n 1.+\n 2.-\n 3./\n 4.*\n");
-      scanf(" %c", &op);
+    printf("Welcome to the Number Guessing Game!\n");
+    printf("I have chosen a number between 1 and 100. Can you guess it?\n");
 
-      switch(op){
+    do {
+        printf("Guess the number I have chosen: ");
+        scanf("%d", &n);
 
-      case '+':
-        r = a + b;
-        printf("%d", r);
-        break;
+        att++;
 
-      case '-':
-        r = a - b;
-        printf("%d", r);
-        break;
+        if (n < rno) {
+            printf("No, I have chosen a number larger than this.\n");
+        } else if (n > rno) {
+            printf("No, I have chosen a number smaller than this.\n");
+        } else {
+            printf("Congratulations! You guessed the number in %d attempts.\n", att);
+        }
 
-      case '/':
-        r = a / b;
-        printf("%d", r);
-        break;
+    } while (n != rno);
 
-        case '*':
-        r = a * b;
-        printf("%d", r);
-        break;
-      }
-
+    return 0;
 }
